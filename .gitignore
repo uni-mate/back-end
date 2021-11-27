@@ -2,3 +2,5 @@
 __pycache__
 venv
 LICENSE
+config.py
+db_settings.py
