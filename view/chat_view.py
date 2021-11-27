@@ -40,22 +40,11 @@ def create_chat_blueprint(services):
         return chat_service.get_chat_rooms()
     
     @chat_bp.route("/new-chat", methods=["POST"])
+    @login_required
     def create_chat():
         chat_info = request.json
         chat_service.insert_new_chat(chat_info)
         return jsonify({"message": "새로운 채팅방이 만들어졌습니다."})
-    
-    # @chat_bp.route('/sessions')
-    # def sessions():
-    #     return render_template('session.html')
-
-    # def messageReceived(methods=['GET', 'POST']):
-    #     print('message was received!!!')
-
-    # @socketio.on('my event')
-    # def handle_my_custom_event(json, methods=['GET', 'POST']):
-    #     print('received my event: ' + str(json))
-    #     socketio.emit('my response', json, callback=messageReceived)
     
     return chat_bp
     
